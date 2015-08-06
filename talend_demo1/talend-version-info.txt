@@ -1,0 +1,6 @@
+this is developed under 
+
+"Talend Open Studio for Big Data"
+
+Version: 5.5.2
+Build id: V5.5.2_20150128_1740
