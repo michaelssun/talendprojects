@@ -4,3 +4,5 @@ this is developed under
 
 Version: 5.5.2
 Build id: V5.5.2_20150128_1740
+
+If there is any incompatibility issue, we need use this exact studio.
