@@ -2,7 +2,7 @@
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.talend.org/mapper" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default">
   <context confirmationNeeded="false" name="Default"/>
   <parameters>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="0" show="false"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="286" show="false"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="0" show="false"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" value="" show="false"/>
     <elementParameter field="CHECK" name="IMPLICITCONTEXT_USE_PROJECT_SETTINGS" value="true" show="false"/>
@@ -90,6 +90,7 @@
     <routinesParameter id="_k4ohkDr1EeWXNLuNtWxUvw" name="TalendDate"/>
     <routinesParameter id="_k4qWwDr1EeWXNLuNtWxUvw" name="TalendString"/>
     <routinesParameter id="_8h2C8DvDEeWXNLuNtWxUvw" name="customizedRoutines"/>
+    <routinesParameter id="_8h2C8DvDEeWXNLuNtWxUvw" name="tealiumUserCleanup"/>
   </parameters>
   <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="96" posY="416">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputDelimited_1" show="false"/>
@@ -232,11 +233,11 @@
       <column comment="" key="false" name="permissions" nullable="true" pattern="" sourceType="" type="id_List" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var"/>
       <outputTables sizeState="INTERMEDIATE" name="user_update_doc">
         <mapperTableEntries name="email" expression="row2.email " type="id_String" nullable="true"/>
-        <mapperTableEntries name="permissions" expression="customizedRoutines.getPermList(row2.accounts,row2.perms  ) " type="id_List" nullable="true"/>
+        <mapperTableEntries name="permissions" expression="tealiumUserCleanup.getPermList(row2.accounts,row2.perms  ) " type="id_List" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row2" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="email" type="id_String" nullable="true"/>
@@ -302,10 +303,10 @@
     <elementParameter field="TABLE" name="MAPPING">
       <elementValue elementRef="SCHEMA_COLUMN" value="email"/>
       <elementValue elementRef="PARENT_NODE_PATH" value=""/>
-      <elementValue elementRef="REMOVE_NULL_FIELD" value="false"/>
+      <elementValue elementRef="REMOVE_NULL_FIELD" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="permissions"/>
       <elementValue elementRef="PARENT_NODE_PATH" value=""/>
-      <elementValue elementRef="REMOVE_NULL_FIELD" value="false"/>
+      <elementValue elementRef="REMOVE_NULL_FIELD" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="CHECK" name="IS_VIRTUAL_COMPONENT" value="false"/>
