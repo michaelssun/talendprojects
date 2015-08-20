@@ -768,6 +768,7 @@
     <metadata connector="FLOW" label="user_update_doc" name="user_update_doc">
       <column comment="" key="true" name="email" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="permissions" nullable="true" pattern="" sourceType="" type="id_List" usefulColumn="true"/>
+      <column comment="" key="false" name="permission_exclusions" nullable="true" pattern="" sourceType="" type="id_List" usefulColumn="true"/>
     </metadata>
     <metadata connector="FLOW" label="user_update_doc" name="currentUser">
       <column comment="" key="true" name="email" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
@@ -782,6 +783,7 @@
       <outputTables sizeState="INTERMEDIATE" name="user_update_doc">
         <mapperTableEntries name="email" expression="row8.email " type="id_String" nullable="true"/>
         <mapperTableEntries name="permissions" expression="TealiumUserCleanupUtil.getPermList(row8.accounts) " type="id_List" nullable="true"/>
+        <mapperTableEntries name="permission_exclusions" expression="java.util.Collections.EMPTY_LIST " type="id_List" nullable="true"/>
       </outputTables>
       <outputTables sizeState="INTERMEDIATE" name="currentUser">
         <mapperTableEntries name="email" expression="row8.email " type="id_String" nullable="true"/>
@@ -815,12 +817,15 @@
       <elementValue elementRef="LENGTH" value="10"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="permissions"/>
       <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="permission_exclusions"/>
+      <elementValue elementRef="LENGTH" value="10"/>
     </elementParameter>
     <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="100" show="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="user_update_doc" name="tLogRow_6">
       <column comment="" key="true" name="email" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="permissions" nullable="true" pattern="" sourceType="" type="id_List" usefulColumn="true"/>
+      <column comment="" key="false" name="permission_exclusions" nullable="true" pattern="" sourceType="" type="id_List" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMongoDBOutput" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1120" posY="704">
@@ -857,6 +862,9 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="permissions"/>
       <elementValue elementRef="PARENT_NODE_PATH" value=""/>
       <elementValue elementRef="REMOVE_NULL_FIELD" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="permission_exclusions"/>
+      <elementValue elementRef="PARENT_NODE_PATH" value=""/>
+      <elementValue elementRef="REMOVE_NULL_FIELD" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
     <elementParameter field="CHECK" name="IS_VIRTUAL_COMPONENT" value="false"/>
@@ -874,6 +882,7 @@
     <metadata connector="FLOW" label="user_update_doc" name="tMongoDBOutput_3">
       <column comment="" key="true" name="email" nullable="true" pattern="" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" name="permissions" nullable="true" pattern="" sourceType="" type="id_List" usefulColumn="true"/>
+      <column comment="" key="false" name="permission_exclusions" nullable="true" pattern="" sourceType="" type="id_List" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMongoDBOutput" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1120" posY="800">
@@ -1252,6 +1261,9 @@
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
       <elementValue elementRef="TRACE_COLUMN" value="permissions"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="permission_exclusions"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
