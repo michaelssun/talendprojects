@@ -115,6 +115,7 @@
     <routinesParameter id="_k4qWwDr1EeWXNLuNtWxUvw" name="TalendString"/>
     <routinesParameter id="_8h2C8DvDEeWXNLuNtWxUvw" name="customizedRoutines"/>
     <routinesParameter id="_8h2C8DvDEeWXNLuNtWxUvw" name="tealiumUserCleanup"/>
+    <routinesParameter id="_j0ns8EeEEeWRMfVcIHVh3g" name="TealiumUserCleanupUtil"/>
   </parameters>
   <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="-64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileInputDelimited_3" show="false"/>
@@ -272,13 +273,13 @@
       <column defaultValue="" key="false" length="0" name="body" nullable="true" precision="0" sourceType="" type="id_Document" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="MapperData">
-      <uiProperties/>
+      <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="output">
         <mapperTableEntries name="statusCode" expression="row1.statusCode " type="id_Integer" nullable="true"/>
         <mapperTableEntries name="body" expression="row1.body " type="id_Document" nullable="true"/>
         <mapperTableEntries name="string" expression="row1.string " type="id_String" nullable="true"/>
-        <mapperTableEntries name="globalmap" expression="tealiumUserCleanup.getJsessionId(globalMap) " type="id_String" nullable="true"/>
+        <mapperTableEntries name="globalmap" expression="TealiumUserCleanupUtil.getJsessionId(globalMap) " type="id_String" nullable="true"/>
       </outputTables>
       <outputTables sizeState="INTERMEDIATE" name="extractJson">
         <mapperTableEntries name="body" expression="row1.body " type="id_Document" nullable="true"/>
@@ -488,7 +489,7 @@
         <mapperTableEntries name="email" expression="row6.email " type="id_String" nullable="true"/>
       </outputTables>
       <outputTables sizeState="INTERMEDIATE" name="processeduser">
-        <mapperTableEntries name="timestamp" expression="tealiumUserCleanup.getCurrentTimeStamp() " type="id_String" nullable="true"/>
+        <mapperTableEntries name="timestamp" expression="TealiumUserCleanupUtil.getCurrentTimeStamp() " type="id_String" nullable="true"/>
         <mapperTableEntries name="email" expression="row6.email " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row6" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
@@ -780,13 +781,13 @@
       <varTables sizeState="INTERMEDIATE" name="Var"/>
       <outputTables sizeState="INTERMEDIATE" name="user_update_doc">
         <mapperTableEntries name="email" expression="row8.email " type="id_String" nullable="true"/>
-        <mapperTableEntries name="permissions" expression="tealiumUserCleanup.getPermList(row8.accounts ) " type="id_List" nullable="true"/>
+        <mapperTableEntries name="permissions" expression="TealiumUserCleanupUtil.getPermList(row8.accounts) " type="id_List" nullable="true"/>
       </outputTables>
       <outputTables sizeState="INTERMEDIATE" name="currentUser">
         <mapperTableEntries name="email" expression="row8.email " type="id_String" nullable="true"/>
       </outputTables>
       <outputTables sizeState="INTERMEDIATE" name="updatedusers">
-        <mapperTableEntries name="timestamp" expression="tealiumUserCleanup.getCurrentTimeStamp() " type="id_String" nullable="true"/>
+        <mapperTableEntries name="timestamp" expression="TealiumUserCleanupUtil.getCurrentTimeStamp() " type="id_String" nullable="true"/>
         <mapperTableEntries name="email" expression="row8.email " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row8" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
@@ -1010,7 +1011,7 @@
       <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="statusoutput">
-        <mapperTableEntries name="timestamp" expression="tealiumUserCleanup.getCurrentTimeStamp() " type="id_String" nullable="true"/>
+        <mapperTableEntries name="timestamp" expression="TealiumUserCleanupUtil.getCurrentTimeStamp() " type="id_String" nullable="true"/>
         <mapperTableEntries name="ERROR_CODE" expression="row4.ERROR_CODE " type="id_Integer" nullable="true"/>
         <mapperTableEntries name="email" expression="((List&lt;String>)globalMap.get(&quot;currentuserupdated&quot;)).get((Integer)globalMap.get(&quot;tLoop_1_CURRENT_VALUE&quot;)) " type="id_String" nullable="true"/>
       </outputTables>
