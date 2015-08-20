@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 /*
  * user specification: the function's comment should contain keys as follows: 1. write about the function's comment.but
@@ -29,8 +30,8 @@ import java.util.Set;
  */
 public class tealiumUserCleanup {
 	
-	private static 
-	Map<String, List<String>> permissionMap=loadPermissions();
+	private static	Map<String, List<String>> permissionMap=loadPermissions();
+	private static Pattern PATTERN_ACCOUNT_PERMS = Pattern.compile("[_A-Za-z0-9-]+:[a-z]+");
 
     /**
      * helloExample: not return value, only print "hello" + message.
@@ -63,16 +64,18 @@ public class tealiumUserCleanup {
     public static List<String> getPermList(List<String> accounts){
     	Set<String> output=new HashSet<String>();
     	for (String accountperm : accounts) {
-    		System.out.println("accountperm="+accountperm);
-    		if (accountperm!=null && accountperm.length()>0&&accountperm.indexOf(":")>1) {
+    		if (accountperm!=null &&  PATTERN_ACCOUNT_PERMS.matcher(accountperm).matches()) {
+    			//System.out.println("accountperm="+accountperm);
 				String[] extractedPerms=accountperm.split(":");
 				List<String> predefinedPerms=permissionMap.get(extractedPerms[1]);
 				for (String permLine : predefinedPerms) {
 					output.add(permLine.replace("account_name", extractedPerms[0]).replace("profile_name", "*"));
-				}
+				}    			
+			}else{
+				System.err.println("Ignoring invalid account permissions: "+accountperm);
 			}
 		}
-    	System.out.println("new perms="+output);
+    	//System.out.println("new perms="+output);
     	return new ArrayList<>(output);
     }
     
